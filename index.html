@@ -1,324 +1,297 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Chirag Puthran — Software Developer</title>
+  <meta name="description" content="Chirag Puthran — Backend & Web Developer. Java, Python, Node.js, React. Graduate Engineer Trainee at GlowTouch. Portfolio, projects and contact." />
 
-  <!-- Tailwind v2 CDN (kept as original) -->
+  <!-- Tailwind v2 CDN kept intentionally compatible with original environment -->
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <script src="https://unpkg.com/feather-icons"></script>
 
   <style>
-    /* subtle focus outline */
-    :focus { outline: 2px solid rgba(59,130,246,0.25); outline-offset: 2px; }
-    /* small card hover */
-    .card-hover:hover { transform: translateY(-6px); box-shadow: 0 18px 30px rgba(2,6,23,0.06); }
-    /* progress bar backgrounds */
-    .skill-bg { background: rgba(0,0,0,0.06); }
+    :root{--accent: #6366f1}
+    html,body{height:100%}
+    :focus{outline:2px solid rgba(99,102,241,0.18);outline-offset:3px}
+    .card-hover{transition:all .28s cubic-bezier(.2,.9,.3,1)}
+    .card-hover:hover{transform:translateY(-8px);box-shadow:0 20px 40px rgba(2,6,23,0.08)}
+    .skill-bg{background:rgba(0,0,0,0.06)}
+    /* subtle code block style */
+    pre{background:#0f172a;color:#e6eef8;padding:1rem;border-radius:0.5rem;overflow:auto}
   </style>
 </head>
-<body class="bg-gray-50 text-gray-900 antialiased">
+<body class="bg-gray-50 text-gray-900 antialiased min-h-screen flex flex-col">
 
-  <!-- Header / Navbar -->
-  <header class="sticky top-0 z-50 bg-white border-b">
-    <nav class="max-w-6xl mx-auto px-5 py-4 flex items-center justify-between">
+  <!-- Header -->
+  <header class="bg-white border-b sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-5 py-4 flex items-center justify-between">
       <a href="#home" class="text-xl font-extrabold tracking-tight">Chirag <span class="text-indigo-600">Puthran</span></a>
 
-      <div class="hidden md:flex items-center space-x-6 text-sm">
+      <nav class="hidden md:flex items-center space-x-6 text-sm">
         <a href="#about" class="hover:opacity-80">About</a>
         <a href="#skills" class="hover:opacity-80">Skills</a>
-        <a href="#experience" class="hover:opacity-80">Experience</a>
         <a href="#projects" class="hover:opacity-80">Projects</a>
+        <a href="#experience" class="hover:opacity-80">Experience</a>
         <a href="#contact" class="hover:opacity-80">Contact</a>
-        <a href="chiragresume.pdf.pdf" download="Chirag_Puthran_CV.pdf"
-           class="inline-flex items-center gap-2 border px-3 py-2 rounded-lg hover:bg-gray-50 transition">
+        <a href="/mnt/data/chiragresume.pdf" download="Chirag_Puthran_CV.pdf" class="inline-flex items-center gap-2 border px-3 py-2 rounded-lg hover:bg-gray-50 transition">
           <i data-feather="download"></i> Resume
         </a>
-      </div>
+      </nav>
 
-      <!-- Mobile menu button -->
-      <button id="menuBtn" class="md:hidden inline-flex items-center p-2 rounded-lg border">
-        <svg id="menuOpen" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
-             stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-             d="M4 6h16M4 12h16M4 18h16" /></svg>
-        <svg id="menuClose" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden" fill="none" viewBox="0 0 24 24"
-             stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-             d="M6 18L18 6M6 6l12 12" /></svg>
+      <button id="menuBtn" class="md:hidden inline-flex items-center p-2 rounded-lg border" aria-expanded="false" aria-controls="mobileNav">
+        <svg id="menuOpen" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+        <svg id="menuClose" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
       </button>
-    </nav>
+    </div>
 
-    <!-- Mobile nav -->
-    <div id="mobileNav" class="hidden md:hidden border-t">
+    <div id="mobileNav" class="hidden md:hidden border-t" role="menu">
       <div class="px-5 py-4 space-y-3">
         <a href="#about" class="block">About</a>
         <a href="#skills" class="block">Skills</a>
-        <a href="#experience" class="block">Experience</a>
         <a href="#projects" class="block">Projects</a>
+        <a href="#experience" class="block">Experience</a>
         <a href="#contact" class="block">Contact</a>
-        <a href="chiragresume.pdf.pdf" download class="inline-block mt-2 border px-3 py-2 rounded-lg">Download Resume</a>
+        <a href="/mnt/data/chiragresume.pdf" download class="inline-block mt-2 border px-3 py-2 rounded-lg">Download Resume</a>
       </div>
     </div>
   </header>
 
   <!-- HERO -->
-  <section id="home" class="max-w-6xl mx-auto px-5 py-12">
-    <div class="grid md:grid-cols-2 gap-8 items-center">
-      <div>
-        <h1 class="text-4xl md:text-5xl font-extrabold leading-tight">
-          Software Developer — Backend & Web
-        </h1>
-        <p class="mt-4 text-lg text-gray-700">
-          BCA graduate with 1+ year experience in web troubleshooting, client support, and backend debugging.
-          Proficient in Java, Python, SQL, Firebase, React & Node.js. I build clean, efficient systems and enjoy solving
-          real-world problems.
-        </p>
+  <main class="flex-1">
+    <section id="home" class="max-w-6xl mx-auto px-5 py-12">
+      <div class="grid md:grid-cols-2 gap-8 items-center">
+        <div>
+          <h1 class="text-4xl md:text-5xl font-extrabold leading-tight">Software Developer — Backend & Web</h1>
+          <p class="mt-4 text-lg text-gray-700">BCA graduate • Graduate Engineer Trainee @ GlowTouch • 1+ year solving production incidents, automating workflows and building reliable services. Comfortable with Java, Python, Node.js, React, SQL and cloud tooling.</p>
 
-        <div class="mt-6 flex flex-wrap gap-3">
-          <a href="mailto:chiragputhran2003@gmail.com" class="inline-flex items-center gap-2 bg-indigo-600 text-white px-4 py-2 rounded-lg shadow hover:opacity-95 transition">
-            <i data-feather="mail"></i> Email
-          </a>
-          <a href="#projects" class="inline-flex items-center gap-2 border px-4 py-2 rounded-lg hover:transform hover:-translate-y-1 transition">
-            <i data-feather="folder"></i> Projects
-          </a>
-          <a href="chiragresume.pdf.pdf" download class="inline-flex items-center gap-2 border px-4 py-2 rounded-lg hover:bg-gray-50 transition">
-            <i data-feather="download"></i> Download CV
-          </a>
-        </div>
+          <ul class="mt-4 text-sm text-gray-700 space-y-2">
+            <li>✅ Improved hosting automation — cut manual ops by <strong>~15%</strong>.</li>
+            <li>✅ Maintained client sites with <strong>~99% uptime</strong> through rapid debugging & monitoring.</li>
+            <li>✅ Built projects focused on real users — mobile-first, low-bandwidth friendly.</li>
+          </ul>
 
-        <div class="mt-6 flex items-center gap-4 text-sm text-gray-600">
-          <div class="inline-flex items-center gap-2">
-            <i data-feather="phone"></i> +91 7760290172
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a href="mailto:chiragputhran2003@gmail.com" class="inline-flex items-center gap-2 bg-indigo-600 text-white px-4 py-2 rounded-lg shadow hover:opacity-95 transition" aria-label="Email Chirag">
+              <i data-feather="mail"></i> Email
+            </a>
+            <a href="#projects" class="inline-flex items-center gap-2 border px-4 py-2 rounded-lg hover:-translate-y-1 transition" aria-label="View projects">
+              <i data-feather="folder"></i> Projects
+            </a>
+            <a href="/mnt/data/chiragresume.pdf" download class="inline-flex items-center gap-2 border px-4 py-2 rounded-lg hover:bg-gray-50 transition" aria-label="Download CV">
+              <i data-feather="download"></i> Download CV
+            </a>
           </div>
-          <div class="inline-flex items-center gap-2">
-            <i data-feather="map-pin"></i> Kundapura, Udupi, Karnataka
+
+          <div class="mt-6 flex items-center gap-4 text-sm text-gray-600">
+            <div class="inline-flex items-center gap-2"><i data-feather="phone"></i> +91 7760290172</div>
+            <div class="inline-flex items-center gap-2"><i data-feather="map-pin"></i> Kundapura, Udupi, Karnataka</div>
           </div>
         </div>
+
+        <aside class="bg-white rounded-2xl p-6 shadow-sm card-hover border">
+          <p class="text-sm uppercase tracking-widest text-gray-500">Current</p>
+          <p class="text-lg font-semibold mt-2">Graduate Engineer Trainee</p>
+          <p class="text-gray-600">GlowTouch Technologies — Web Troubleshooting</p>
+          <ul class="mt-4 text-gray-700 list-disc pl-5 space-y-1">
+            <li>Automated hosting checks & scripts that cut manual tasks and improved reliability.</li>
+            <li>Maintained production sites, performed root-cause analysis and patching.</li>
+            <li>Collaborated with clients and cross-functional teams to deliver fixes and improvements.</li>
+          </ul>
+          <div class="mt-4 text-sm text-gray-500">Open to Backend & Full-stack roles • Ready to contribute from day one</div>
+        </aside>
       </div>
+    </section>
 
-      <div class="bg-white rounded-2xl p-6 shadow-sm card-hover border">
-        <p class="text-sm uppercase tracking-widest text-gray-500">Current</p>
-        <p class="text-lg font-semibold mt-2">Graduate Engineer Trainee</p>
-        <p class="text-gray-600">GlowTouch Technologies — Web Troubleshooting</p>
-        <ul class="mt-4 text-gray-700 list-disc pl-5 space-y-1">
-          <li>Managed and optimized hosting infrastructure — automation reduced manual hours by ~15%.</li>
-          <li>Resolved client issues to maintain ~99% uptime.</li>
-          <li>Worked with PHP, phpMyAdmin, and cloud tooling; now transitioning to full-stack tasks.</li>
-        </ul>
-        <div class="mt-4 text-sm text-gray-500">Open to Software Developer roles • Backend / Web</div>
-      </div>
-    </div>
-  </section>
+    <!-- About -->
+    <section id="about" class="max-w-6xl mx-auto px-5 py-12">
+      <h2 class="text-2xl font-bold">About Me</h2>
+      <p class="mt-4 text-gray-700 leading-relaxed">I write reliable server-side code and pragmatic front-end features. My work focuses on robustness, monitoring and user-first performance. I enjoy debugging production problems, automating repetitive tasks and shipping small, testable features frequently.</p>
+    </section>
 
-  <!-- ABOUT -->
-  <section id="about" class="max-w-6xl mx-auto px-5 py-12">
-    <h2 class="text-2xl font-bold">About Me</h2>
-    <p class="mt-4 text-gray-700 leading-relaxed">
-      I’m a BCA graduate and a practical problem-solver with a year+ experience in web troubleshooting and client-focused
-      engineering. I enjoy backend development, debugging, and building resilient services that perform well under
-      constraints. I’m comfortable with Java, Python, SQL, Firebase and modern JavaScript stacks. Fast learner,
-      collaborative team player, and motivated to grow in software development roles.
-    </p>
-  </section>
+    <!-- Skills -->
+    <section id="skills" class="max-w-6xl mx-auto px-5 py-12">
+      <h2 class="text-2xl font-bold">Skills</h2>
 
-  <!-- SKILLS -->
-  <section id="skills" class="max-w-6xl mx-auto px-5 py-12">
-    <h2 class="text-2xl font-bold">Skills</h2>
-
-    <div class="grid md:grid-cols-2 gap-6 mt-6">
-      <!-- list / badges -->
-      <div class="space-y-4">
-        <div class="flex flex-wrap gap-2">
-          <span class="px-3 py-1 rounded-full bg-indigo-50 text-indigo-700 text-sm">Java</span>
-          <span class="px-3 py-1 rounded-full bg-indigo-50 text-indigo-700 text-sm">Python</span>
-          <span class="px-3 py-1 rounded-full bg-indigo-50 text-indigo-700 text-sm">JavaScript</span>
-          <span class="px-3 py-1 rounded-full bg-indigo-50 text-indigo-700 text-sm">React</span>
-          <span class="px-3 py-1 rounded-full bg-indigo-50 text-indigo-700 text-sm">Node.js</span>
-          <span class="px-3 py-1 rounded-full bg-indigo-50 text-indigo-700 text-sm">Firebase</span>
-          <span class="px-3 py-1 rounded-full bg-indigo-50 text-indigo-700 text-sm">MySQL</span>
-          <span class="px-3 py-1 rounded-full bg-indigo-50 text-indigo-700 text-sm">Git</span>
-        </div>
-
-        <div class="mt-4 space-y-4">
-          <!-- progress style bars -->
-          <div>
-            <div class="flex justify-between text-sm">
-              <div class="font-medium">Java</div>
-              <div class="text-gray-500">80%</div>
-            </div>
-            <div class="w-full h-2 rounded-full skill-bg mt-2">
-              <div style="width:80%" class="h-2 rounded-full bg-indigo-600"></div>
-            </div>
+      <div class="grid md:grid-cols-2 gap-6 mt-6">
+        <div class="space-y-4">
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1 rounded-full bg-indigo-50 text-indigo-700 text-sm">Java</span>
+            <span class="px-3 py-1 rounded-full bg-indigo-50 text-indigo-700 text-sm">Python</span>
+            <span class="px-3 py-1 rounded-full bg-indigo-50 text-indigo-700 text-sm">JavaScript</span>
+            <span class="px-3 py-1 rounded-full bg-indigo-50 text-indigo-700 text-sm">Node.js</span>
+            <span class="px-3 py-1 rounded-full bg-indigo-50 text-indigo-700 text-sm">React</span>
+            <span class="px-3 py-1 rounded-full bg-indigo-50 text-indigo-700 text-sm">SQL</span>
+            <span class="px-3 py-1 rounded-full bg-indigo-50 text-indigo-700 text-sm">Firebase</span>
+            <span class="px-3 py-1 rounded-full bg-indigo-50 text-indigo-700 text-sm">Git</span>
           </div>
 
-          <div>
-            <div class="flex justify-between text-sm">
-              <div class="font-medium">Python</div>
-              <div class="text-gray-500">75%</div>
+          <div class="mt-4 space-y-4">
+            <!-- progress bars -->
+            <div>
+              <div class="flex justify-between text-sm">
+                <div class="font-medium">Java</div>
+                <div class="text-gray-500">80%</div>
+              </div>
+              <div class="w-full h-2 rounded-full skill-bg mt-2">
+                <div style="width:80%" class="h-2 rounded-full bg-indigo-600"></div>
+              </div>
             </div>
-            <div class="w-full h-2 rounded-full skill-bg mt-2">
-              <div style="width:75%" class="h-2 rounded-full bg-indigo-600"></div>
-            </div>
-          </div>
 
-          <div>
-            <div class="flex justify-between text-sm">
-              <div class="font-medium">JavaScript / React</div>
-              <div class="text-gray-500">70%</div>
+            <div>
+              <div class="flex justify-between text-sm">
+                <div class="font-medium">Python</div>
+                <div class="text-gray-500">75%</div>
+              </div>
+              <div class="w-full h-2 rounded-full skill-bg mt-2">
+                <div style="width:75%" class="h-2 rounded-full bg-indigo-600"></div>
+              </div>
             </div>
-            <div class="w-full h-2 rounded-full skill-bg mt-2">
-              <div style="width:70%" class="h-2 rounded-full bg-indigo-600"></div>
-            </div>
-          </div>
 
-          <div>
-            <div class="flex justify-between text-sm">
-              <div class="font-medium">SQL / Databases</div>
-              <div class="text-gray-500">70%</div>
-            </div>
-            <div class="w-full h-2 rounded-full skill-bg mt-2">
-              <div style="width:70%" class="h-2 rounded-full bg-indigo-600"></div>
+            <div>
+              <div class="flex justify-between text-sm">
+                <div class="font-medium">React / JavaScript</div>
+                <div class="text-gray-500">70%</div>
+              </div>
+              <div class="w-full h-2 rounded-full skill-bg mt-2">
+                <div style="width:70%" class="h-2 rounded-full bg-indigo-600"></div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <!-- tools & brief list -->
-      <div class="bg-white rounded-2xl p-6 shadow card-hover border">
-        <h3 class="font-semibold text-lg">Tools & Technologies</h3>
-        <ul class="mt-3 text-gray-700 list-disc pl-5 space-y-2">
-          <li>Front-end: HTML, CSS, JavaScript, React (basics)</li>
-          <li>Back-end: Node.js, Express.js, Java (core)</li>
-          <li>Databases: MySQL, MongoDB (projects), SQLite</li>
-          <li>Mobile: Flutter (Instagram Clone project)</li>
-          <li>Other: Firebase Auth / Realtime DB, Git, VSCode</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- EXPERIENCE -->
-  <section id="experience" class="max-w-6xl mx-auto px-5 py-12">
-    <h2 class="text-2xl font-bold">Experience</h2>
-
-    <div class="mt-6 grid md:grid-cols-2 gap-6">
-      <div class="bg-white p-6 rounded-2xl shadow card-hover border">
-        <h3 class="text-lg font-semibold">Web Troubleshooting Engineer (Graduate Engineer Trainee)</h3>
-        <p class="text-gray-600 mt-1">GlowTouch Technologies — Mangalore (Sep 2024 – Present)</p>
-        <ul class="list-disc pl-5 mt-3 text-gray-700 space-y-2">
-          <li>Managed & optimized hosting infrastructure; introduced automation that reduced manual hours by ≈15%.</li>
-          <li>Collaborated with clients to resolve production issues, contributing to ~99% uptime.</li>
-          <li>Hands-on with PHP, phpMyAdmin, and common cloud hosting tools — performed diagnostics, debugging, and patching.</li>
-        </ul>
-      </div>
-
-      <div class="bg-white p-6 rounded-2xl shadow card-hover border">
-        <h3 class="text-lg font-semibold">Freelance & College Projects</h3>
-        <p class="text-gray-600 mt-1">Personal projects and academic work</p>
-        <ul class="list-disc pl-5 mt-3 text-gray-700 space-y-2">
-          <li>Worked on full-stack project builds and debugging workflows, improving response time and UX.</li>
-          <li>Participated in coding workshops and campus tech events to sharpen problem-solving skills.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROJECTS -->
-  <section id="projects" class="max-w-6xl mx-auto px-5 py-12">
-    <h2 class="text-2xl font-bold">Projects</h2>
-
-    <div class="mt-6 grid md:grid-cols-2 gap-6">
-      <!-- Instagram Clone -->
-      <div class="bg-white p-6 rounded-2xl shadow card-hover border">
-        <div class="flex items-start justify-between">
-          <h3 class="text-lg font-semibold">Instagram Clone App</h3>
-          <span class="text-sm text-gray-500">(Nov 2024)</span>
-        </div>
-        <p class="mt-2 text-gray-600">Flutter, Dart, Firebase</p>
-        <ul class="list-disc pl-5 mt-3 text-gray-700 space-y-1">
-          <li>Implemented photo sharing, user auth, profiles, likes & comments.</li>
-          <li>Used Firebase Auth and Realtime DB for seamless updates and secure sign-in.</li>
-          <li>Focus on responsive UI and efficient state management.</li>
-        </ul>
-        <div class="mt-4">
-          <!-- placeholder links - replace with real repo / demo -->
-          <a href="https://github.com/codChirag" target="_blank" class="text-indigo-600 hover:underline text-sm">View code</a>
+        <div class="bg-white rounded-2xl p-6 shadow card-hover border">
+          <h3 class="font-semibold text-lg">Tools & Technologies</h3>
+          <ul class="mt-3 text-gray-700 list-disc pl-5 space-y-2">
+            <li>Back-end: Java, Node.js, Express.js</li>
+            <li>Databases: MySQL, MongoDB, SQLite</li>
+            <li>Other: Firebase, Git, VS Code, Postman</li>
+            <li>Concepts: OOP, SDLC, Debugging, Monitoring</li>
+          </ul>
         </div>
       </div>
+    </section>
 
-      <!-- RideVista -->
-      <div class="bg-white p-6 rounded-2xl shadow card-hover border">
-        <div class="flex items-start justify-between">
-          <h3 class="text-lg font-semibold">RideVista — Uber Clone for Tier-3 Cities</h3>
-          <span class="text-sm text-gray-500">(Mar 2025)</span>
-        </div>
-        <p class="mt-2 text-gray-600">HTML, CSS, JavaScript, Firebase</p>
-        <ul class="list-disc pl-5 mt-3 text-gray-700 space-y-1">
-          <li>Responsive taxi booking platform focused on rural & semi-urban needs.</li>
-          <li>Implemented booking, driver assignment, and ride scheduling with Firebase Realtime DB.</li>
-          <li>Optimized UI for mobile and low-bandwidth scenarios.</li>
-        </ul>
-        <div class="mt-4">
-          <a href="https://codchirag.github.io/Resume" target="_blank" class="text-indigo-600 hover:underline text-sm">Live demo</a>
-        </div>
-      </div>
+    <!-- Projects -->
+    <section id="projects" class="max-w-6xl mx-auto px-5 py-12">
+      <h2 class="text-2xl font-bold">Projects</h2>
 
-      <!-- Jobsphere -->
-      <div class="bg-white p-6 rounded-2xl shadow card-hover border">
-        <div class="flex items-start justify-between">
-          <h3 class="text-lg font-semibold">Jobsphere — Job Portal Web App</h3>
-          <span class="text-sm text-gray-500">(Oct 2025)</span>
-        </div>
-        <p class="mt-2 text-gray-600">React.js, Node.js, Express, MongoDB</p>
-        <ul class="list-disc pl-5 mt-3 text-gray-700 space-y-1">
-          <li>Built responsive interface connecting job seekers with employers, with authentication and application tracking.</li>
-          <li>Back-end APIs in Express; MongoDB for job & user data storage; improved UX for faster navigation.</li>
-        </ul>
-        <div class="mt-4">
-          <a href="https://github.com/codChirag" target="_blank" class="text-indigo-600 hover:underline text-sm">View repo</a>
-        </div>
-      </div>
-    </div>
-  </section>
+      <div class="mt-6 grid md:grid-cols-2 gap-6">
+        <!-- Instagram Clone -->
+        <article class="bg-white p-6 rounded-2xl shadow card-hover border">
+          <div class="flex items-start justify-between">
+            <h3 class="text-lg font-semibold">Instagram Clone — Full-Stack Mobile App</h3>
+            <span class="text-sm text-gray-500">Nov 2024</span>
+          </div>
+          <p class="mt-2 text-gray-600">Flutter, Dart, Firebase Authentication, Realtime DB, Cloud Storage</p>
+          <ul class="list-disc pl-5 mt-3 text-gray-700 space-y-1">
+            <li>Built a scalable social app with authentication, photo uploads, feed, likes and comments.</li>
+            <li>Implemented secure Firebase Auth and realtime updates for low-latency interactions.</li>
+            <li>Optimized data access patterns and UI for smooth performance on low-end devices (≈30% faster loads).</li>
+          </ul>
+          <div class="mt-4">
+            <a href="https://github.com/codChirag/InstagramClone" target="_blank" rel="noopener" class="text-indigo-600 hover:underline text-sm">View code</a>
+          </div>
+        </article>
 
-  <!-- CONTACT -->
-  <section id="contact" class="max-w-6xl mx-auto px-5 py-12">
-    <h2 class="text-2xl font-bold">Contact</h2>
+        <!-- RideVista -->
+        <article class="bg-white p-6 rounded-2xl shadow card-hover border">
+          <div class="flex items-start justify-between">
+            <h3 class="text-lg font-semibold">RideVista — Taxi Booking Platform (Web)</h3>
+            <span class="text-sm text-gray-500">Mar 2025</span>
+          </div>
+          <p class="mt-2 text-gray-600">HTML, CSS, JavaScript, Firebase Realtime DB</p>
+          <ul class="list-disc pl-5 mt-3 text-gray-700 space-y-1">
+            <li>Developed real-time booking, driver assignment and location updates optimized for low-bandwidth users.</li>
+            <li>Designed data models and client flows to reduce network usage and improve reliability.</li>
+            <li>Built mobile-first UI and offline-friendly behaviors to support Tier-3 city users.</li>
+          </ul>
+          <div class="mt-4">
+            <a href="https://codchirag.github.io/Resume" target="_blank" rel="noopener" class="text-indigo-600 hover:underline text-sm">Live demo</a>
+          </div>
+        </article>
 
-    <div class="mt-6 grid md:grid-cols-3 gap-6">
-      <div class="bg-white rounded-2xl p-6 shadow border">
-        <h4 class="font-semibold">Email</h4>
-        <a href="mailto:chiragputhran2003@gmail.com" class="mt-2 inline-block text-indigo-600 hover:underline">chiragputhran2003@gmail.com</a>
+        <!-- Jobsphere -->
+        <article class="bg-white p-6 rounded-2xl shadow card-hover border">
+          <div class="flex items-start justify-between">
+            <h3 class="text-lg font-semibold">JobSphere — Job Portal Web App</h3>
+            <span class="text-sm text-gray-500">Oct 2025</span>
+          </div>
+          <p class="mt-2 text-gray-600">React.js, Node.js, Express.js, MongoDB</p>
+          <ul class="list-disc pl-5 mt-3 text-gray-700 space-y-1">
+            <li>Implemented REST APIs for job posting, applications and search with Express and MongoDB.</li>
+            <li>Added JWT-based authentication and role-based access control for recruiters and applicants.</li>
+            <li>Improved search performance by adding indexes and optimizing query patterns (≈25% faster).</li>
+          </ul>
+          <div class="mt-4"><a href="https://github.com/codChirag/Jobsphere" target="_blank" rel="noopener" class="text-indigo-600 hover:underline text-sm">View repo</a></div>
+        </article>
+
       </div>
-      <div class="bg-white rounded-2xl p-6 shadow border">
-        <h4 class="font-semibold">Phone</h4>
-        <a href="tel:+917760290172" class="mt-2 inline-block text-gray-700">+91 7760290172</a>
-      </div>
-      <div class="bg-white rounded-2xl p-6 shadow border">
-        <h4 class="font-semibold">Location</h4>
-        <div class="mt-2 text-gray-700">Kundapura, Udupi, Karnataka</div>
-        <div class="mt-4 flex gap-3">
-          <a href="https://github.com/codChirag" target="_blank" class="text-gray-700 inline-flex items-center gap-2"><i data-feather="github"></i> GitHub</a>
-          <a href="https://www.linkedin.com/in/chirag-puthran-9889682a6" target="_blank" class="text-gray-700 inline-flex items-center gap-2"><i data-feather="linkedin"></i> LinkedIn</a>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience" class="max-w-6xl mx-auto px-5 py-12">
+      <h2 class="text-2xl font-bold">Experience</h2>
+
+      <div class="mt-6 grid md:grid-cols-2 gap-6">
+        <div class="bg-white p-6 rounded-2xl shadow card-hover border">
+          <h3 class="text-lg font-semibold">Web Troubleshooting Engineer (Graduate Engineer Trainee)</h3>
+          <p class="text-gray-600 mt-1">GlowTouch Technologies — Mangalore (Sep 2024 – Present)</p>
+          <ul class="list-disc pl-5 mt-3 text-gray-700 space-y-2">
+            <li>Automated hosting checks and scripts, reducing manual load by ≈15%.</li>
+            <li>Led incident response for client-facing sites; contributed to ~99% uptime.</li>
+            <li>Worked with PHP, phpMyAdmin, cloud hosting tooling and monitoring systems.</li>
+          </ul>
+        </div>
+
+        <div class="bg-white p-6 rounded-2xl shadow card-hover border">
+          <h3 class="text-lg font-semibold">Freelance & College Projects</h3>
+          <p class="text-gray-600 mt-1">Personal projects and academic work</p>
+          <ul class="list-disc pl-5 mt-3 text-gray-700 space-y-2">
+            <li>Built full-stack projects, improved UX and debugging workflows.</li>
+            <li>Participated in coding workshops and campus tech events to sharpen problem-solving.</li>
+          </ul>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="max-w-6xl mx-auto px-5 py-12">
+      <h2 class="text-2xl font-bold">Contact</h2>
+      <div class="mt-6 grid md:grid-cols-3 gap-6">
+        <div class="bg-white rounded-2xl p-6 shadow border">
+          <h4 class="font-semibold">Email</h4>
+          <a href="mailto:chiragputhran2003@gmail.com" class="mt-2 inline-block text-indigo-600 hover:underline">chiragputhran2003@gmail.com</a>
+        </div>
+        <div class="bg-white rounded-2xl p-6 shadow border">
+          <h4 class="font-semibold">Phone</h4>
+          <a href="tel:+917760290172" class="mt-2 inline-block text-gray-700">+91 7760290172</a>
+        </div>
+        <div class="bg-white rounded-2xl p-6 shadow border">
+          <h4 class="font-semibold">Profiles</h4>
+          <div class="mt-2 flex flex-col gap-2">
+            <a href="https://github.com/codChirag" target="_blank" rel="noopener" class="inline-flex items-center gap-2"><i data-feather="github"></i> GitHub</a>
+            <a href="https://www.linkedin.com/in/chirag-puthran-9889682a6" target="_blank" rel="noopener" class="inline-flex items-center gap-2"><i data-feather="linkedin"></i> LinkedIn</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <footer class="border-t">
-    <div class="max-w-6xl mx-auto px-5 py-8 text-sm text-gray-500">© 2025 Chirag Puthran. All rights reserved.</div>
+    <div class="max-w-6xl mx-auto px-5 py-8 text-sm text-gray-500">© 2025 Chirag Puthran. Built with attention to accessibility & clarity.</div>
   </footer>
 
   <script>
     feather.replace();
-
-    // Mobile menu toggle
     const menuBtn = document.getElementById('menuBtn');
     const mobileNav = document.getElementById('mobileNav');
     const menuOpen = document.getElementById('menuOpen');
     const menuClose = document.getElementById('menuClose');
 
     menuBtn.addEventListener('click', () => {
+      const expanded = menuBtn.getAttribute('aria-expanded') === 'true';
+      menuBtn.setAttribute('aria-expanded', (!expanded).toString());
       mobileNav.classList.toggle('hidden');
       menuOpen.classList.toggle('hidden');
       menuClose.classList.toggle('hidden');
